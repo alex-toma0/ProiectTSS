@@ -1,9 +1,5 @@
 import { test, expect } from "@playwright/test";
-const [email, name, password] = [
-  "opas@poasd.com",
-  "oaskod",
-  "mckanko19u23y2t6",
-];
+const [email, name, password] = ["test@test.com", "test", "test"];
 test("Authentication Flow", async ({ page }) => {
   await page.goto("http://localhost:5173/register");
   // Fill the form

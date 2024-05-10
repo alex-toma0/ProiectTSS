@@ -8,7 +8,7 @@ test("Profile Navigation", async ({ page }) => {
   // Click the login button
   await page.getByRole("button", { name: "Login" }).click();
 
-  // Checks if login was successful
+  // Navigates to the profile page
   await page.getByRole("link", { name: "Profile" }).click();
 
   // Checks if the elements of the profile loaded correctly

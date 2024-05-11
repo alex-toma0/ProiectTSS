@@ -19,18 +19,24 @@ def run_test(test_function: Callable):
     test_function()
 # -------------
 
-def login_tests(*browsers) -> None:
+
+def login(browser) -> None:
+    
+    browser.get(login_url)
+    email_form = browser.find_element(By.ID, "formBasicEmail")
+    pass_form = browser.find_element(By.ID, "formBasicPassword")
+    login_button = browser.find_element(By.XPATH, "//button[contains(text(), 'Login')]")
+
+    email_form.send_keys(email)
+    pass_form.send_keys(password)
+
+    login_button.click()
+
+def home_tests(*browsers) -> None:
     try:
         for browser in browsers:
-            browser.get(login_url)
-            email_form = browser.find_element(By.ID, "formBasicEmail")
-            pass_form = browser.find_element(By.ID, "formBasicPassword")
-            login_button = browser.find_element(By.XPATH, "//button[contains(text(), 'Login')]")
-
-            email_form.send_keys(email)
-            pass_form.send_keys(password)
-
-            login_button.click()
+            
+            login(browser)
 
             sleep(2)
 

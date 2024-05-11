@@ -1,3 +1,4 @@
+import time
 from time import sleep
 from typing import Callable
 from selenium import webdriver
@@ -21,7 +22,7 @@ def run_test(test_function: Callable):
 
 
 def login(browser) -> None:
-    
+
     browser.get(login_url)
     email_form = browser.find_element(By.ID, "formBasicEmail")
     pass_form = browser.find_element(By.ID, "formBasicPassword")
@@ -32,12 +33,20 @@ def login(browser) -> None:
 
     login_button.click()
 
-def home_tests(*browsers) -> None:
-    try:
-        for browser in browsers:
-            
-            login(browser)
+    sleep(2)
 
+def home_tests(*browsers) -> None:
+    for browser in browsers:
+        try:
+
+            # Check Navigation - login - profile page - back to home page
+            login(browser)
+            profile = browser.find_element(By.XPATH, "//a[contains(text(), 'Profile')]")
+            profile.click()
+            time.sleep(2)
+
+            home = browser.find_element(By.XPATH, "//a[contains(text(), 'Streaming App')]")
+            home.click()
             sleep(2)
 
             genre_button = browser.find_element(By.XPATH, "//*[contains(text(), 'Genre')]")
@@ -45,14 +54,14 @@ def home_tests(*browsers) -> None:
             if (genre_button.is_displayed()):
                 print(f"{browser.name}: {genre_button.text} button is visible")
 
-            sleep(3)
+            sleep(2)
 
-    except Exception as e:
-        print(e)
+        except Exception as e:
+            print(f"Encountered error in {browser.name}: {e}")
 
-    finally:
-        chrome_driver.quit()
+        finally:
+            browser.quit()
 
 # ---------------------------
 
-run_test(lambda: login_tests(chrome_driver, chromium_driver))
+run_test(lambda: home_tests(chromium_driver, chrome_driver))

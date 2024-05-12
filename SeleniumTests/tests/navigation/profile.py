@@ -1,7 +1,7 @@
 from time import sleep
 from selenium.webdriver.common.by import By
 from SeleniumTests.tests.auth.login import login
-from SeleniumTests.config import name
+from SeleniumTests.config import name, email, password
 
 def profile_test(*browsers) -> None:
 
@@ -10,7 +10,7 @@ def profile_test(*browsers) -> None:
         try:
             browser = browser()
             sleep(2)
-            login(browser)
+            login(browser, email, password)
             profile = browser.find_element(By.XPATH, "//a[contains(text(), 'Profile')]")
             profile.click()
             sleep(2)

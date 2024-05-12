@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
-const [email, name, password] = ["test@test.com", "test", "test"];
+const currentDate = Date.now();
+const [email, name, password] = [
+  `test_${currentDate}@test.com`,
+  "test",
+  "test",
+];
 test("Authentication Flow", async ({ page }) => {
   await page.goto("http://localhost:5173/register");
   // Fill the form

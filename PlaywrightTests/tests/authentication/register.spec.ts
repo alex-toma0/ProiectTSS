@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
-const [email, name, password] = ["aasdadsd@aaxxsas.com", "mjnas", "a"];
+const currentDate = Date.now();
+const [email, name, password] = [
+  `test_${currentDate}@test.com`,
+  "test",
+  "test",
+];
 test("Register", async ({ page }) => {
   await page.goto("http://localhost:5173/register");
 

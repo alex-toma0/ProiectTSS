@@ -5,13 +5,6 @@ from selenium.webdriver.common.by import By
 from SeleniumTests.tests.auth.login import login
 from SeleniumTests.config import name
 
-
-# -------------
-def run_test(test_function: Callable):
-    test_function()
-# -------------
-
-
 def profile_test(*browsers) -> None:
 
     print("Profile test started")

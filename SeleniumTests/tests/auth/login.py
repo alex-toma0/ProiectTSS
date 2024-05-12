@@ -1,8 +1,8 @@
-from SeleniumTests.config import login_url, email_id, pass_id, email, password
+from SeleniumTests.config import login_url, email_id, pass_id
 from selenium.webdriver.common.by import By
 from time import sleep
 
-def login(browser) -> None:
+def login(browser, email: str, password: str) -> None:
 
     browser.get(login_url)
     email_form = browser.find_element(By.ID, email_id)

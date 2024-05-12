@@ -8,7 +8,7 @@ from SeleniumTests.config import email, password, title_form_id, img_form_id, ge
 
 def upload(*browsers) -> None:
 
-    print("Button navigation test started")
+    print("Upload test started")
 
     for browser in browsers:
         try:

@@ -1,7 +1,7 @@
 from time import sleep
 from selenium.webdriver.common.by import By
 from SeleniumTests.tests.auth.login import login
-
+from SeleniumTests.config import email, password
 
 def back_to_home_test(*browsers) -> None:
 
@@ -12,10 +12,10 @@ def back_to_home_test(*browsers) -> None:
             # Check Navigation - login - profile page - back to home page
             browser = browser()
             sleep(2)
-            login(browser)
+            login(browser, email, password)
             profile = browser.find_element(By.XPATH, "//a[contains(text(), 'Profile')]")
             profile.click()
-            time.sleep(2)
+            sleep(2)
             home = browser.find_element(By.XPATH, "//a[contains(text(), 'Streaming App')]")
             home.click()
             sleep(2)

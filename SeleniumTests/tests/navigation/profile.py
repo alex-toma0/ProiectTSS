@@ -1,6 +1,4 @@
-import time
 from time import sleep
-from typing import Callable
 from selenium.webdriver.common.by import By
 from SeleniumTests.tests.auth.login import login
 from SeleniumTests.config import name
